@@ -49,7 +49,7 @@ const QAndAContainer = styled.div<{ $isLastItem: boolean }>`
 `;
 
 const Question = styled.div`
-  font-weight: bold;
+  font-weight: 500;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -73,10 +73,13 @@ const QuestionNumber = styled.div`
   align-items: center;
 `;
 
-const Answer = styled.div<{ $isOpen: boolean }>`
+const Answer = styled.p<{ $isOpen: boolean }>`
   max-height: ${({ $isOpen }) => ($isOpen ? "500px" : "0")};
   overflow: hidden;
   transition: max-height 0.3s ease-in-out;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  color: #555;
 `;
 
 export default QAndA;

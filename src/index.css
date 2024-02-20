@@ -1,6 +1,6 @@
 :root {
   font-family: Montserrat, sans-serif;
-  line-height: 1.5;
+  line-height: 1.5rem;
   font-weight: 400;
   font-size: 18px;
   
@@ -13,6 +13,11 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  margin-right: calc(-1 * (100vw - 100%));
+  overflow-x: hidden;
 }
 
 /* reset.css */

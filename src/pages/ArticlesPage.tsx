@@ -4,7 +4,7 @@ import TypingEffect from "../ui/TypingEffect";
 const ArticlesPage = () => {
   return (
     <Container>
-      <PageImage>
+      <PageImage url="/public/images/main.jpg">
         <TypingEffect
           text="Статьи"
           typingDelay={100}

@@ -15,7 +15,7 @@ type DataType = {
 const HomePage = () => {
   return (
     <Container>
-      <PageImage>
+      <PageImage url="/public/images/main.jpg">
         <TypingEffect
           text="Добро пожаловать!"
           typingDelay={100}

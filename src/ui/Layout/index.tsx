@@ -24,11 +24,12 @@ export const Grid = styled.div<{ rows: number; columns: number }>`
   gap: 1rem;
 `;
 
-export const PageImage = styled.div`
+export const PageImage = styled.div<{ url: string }>`
   height: 400px;
   aspect-ratio: "16:9";
   width: 100%;
-  background-image: url("/public/images/main.jpg");
+  background: url(${props => props.url}) no-repeat center;
+  background-size: cover;
   display: flex;
   align-items: center;
   justify-content: center;
