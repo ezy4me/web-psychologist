@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 type PropsType = {
-  title: string;
+  title?: string;
   text: string;
-  imageUrl: string;
+  imageUrl?: string;
 };
 
 const Card = ({ title, text, imageUrl }: PropsType) => {
@@ -19,10 +19,17 @@ const Card = ({ title, text, imageUrl }: PropsType) => {
 };
 
 const CardContainer = styled.div`
+  width: 100%;
+
+  height: 100%;
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
   &:hover {
     transform: scale(1.05);
@@ -32,7 +39,7 @@ const CardContainer = styled.div`
 `;
 
 const CardImage = styled.img`
-  width: 256px;
+  max-width: 256px;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
 

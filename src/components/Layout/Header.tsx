@@ -1,41 +1,52 @@
+import { Link } from "react-router-dom";
 import {
   HeaderContainer,
   HeaderNav,
   HeaderNavList,
   HeaderNavItem,
-  Link,
+  MyLink,
   Logo,
   HeaderActions,
   Button,
+  LogoImage,
+  LogoText,
 } from "./HeaderStyles";
 
 const Header = () => {
   return (
     <HeaderContainer>
-      <Logo src="/public/logo.png" />
+      <Link to={"/"}>
+        <Logo>
+          <LogoImage src="/public/logo.png" />
+          <LogoText>MindCare</LogoText>
+        </Logo>
+      </Link>
       <HeaderNav>
         <HeaderNavList>
           <HeaderNavItem>
-            <Link>Тесты</Link>
+            <MyLink>
+              <Link to={"/tests"}>Тесты</Link>
+            </MyLink>
           </HeaderNavItem>
           <HeaderNavItem>
-            <Link>Статьи</Link>
+            <MyLink>
+              <Link to={"/articles"}>Статьи</Link>
+            </MyLink>
           </HeaderNavItem>
           <HeaderNavItem>
-            <Link>Для психологов</Link>
+            <MyLink>
+              <Link to={"/"}>Для психологов</Link>
+            </MyLink>
           </HeaderNavItem>
           <HeaderNavItem>
-            <Link>О нас</Link>
+            <MyLink>
+              <Link to={"/about"}>О нас</Link>
+            </MyLink>
           </HeaderNavItem>
         </HeaderNavList>
       </HeaderNav>
       <HeaderActions>
-        <Button>
-            Войти
-        </Button>
-        <Button>
-            Зарегистрироваться
-        </Button>
+        <Button>Войти</Button>
       </HeaderActions>
     </HeaderContainer>
   );

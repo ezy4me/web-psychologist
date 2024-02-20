@@ -1,10 +1,38 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.tsx'
-import './index.css'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import {
+  Route,
+  RouterProvider,
+  createBrowserRouter,
+  createRoutesFromElements,
+} from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import AboutPage from "./pages/AboutPage";
+import TestsPage from "./pages/TestsPage";
+import ArticlesPage from "./pages/ArticlesPage";
+import NotFoundPage from "./pages/NotFoundPage";
+import Spinner from "./ui/Spinner";
+import App from "./App";
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
+
+
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<App />}>
+      <Route index element={<HomePage />} />
+      <Route path="/about" element={<AboutPage />} />
+      <Route path="/tests" element={<TestsPage />} />
+      <Route path="/articles" element={<ArticlesPage />} />
+
+      <Route path="/*" element={<NotFoundPage />} />
+
+    </Route>
+  )
+);
+
+ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router} fallbackElement={<Spinner />} />
   </React.StrictMode>,
-)
+);

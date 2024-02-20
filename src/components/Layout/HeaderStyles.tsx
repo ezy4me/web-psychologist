@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const HeaderContainer = styled.header`
-  width: 100%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   align-items: center;
@@ -24,7 +23,7 @@ export const HeaderNavItem = styled.li`
   padding: 0.5rem;
 `;
 
-export const Link = styled.a`
+export const MyLink = styled.div`
   background-image: linear-gradient(to right, #53baff, #00bbff 50%, #000 50%);
   background-size: 200% 100%;
   background-position: -100%;
@@ -85,7 +84,17 @@ export const Button = styled.button`
   }
 `;
 
-export const Logo = styled.img`
+export const Logo = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+`;
+
+export const LogoImage = styled.img`
   width: 64px;
   aspect-ratio: 1;
+`;
+
+export const LogoText = styled.p`
+  font-size: 28px;
 `;

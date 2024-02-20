@@ -1,19 +1,19 @@
-import { Container, PageImage } from "../ui/Layout";
+import { Container, Row } from "../ui/Layout";
 import TypingEffect from "../ui/TypingEffect";
 
-const ArticlesPage = () => {
+const NotFoundPage = () => {
   return (
     <Container>
-      <PageImage>
+      <Row>
         <TypingEffect
-          text="Статьи"
+          text="404 Not Found"
           typingDelay={100}
           erasingDelay={100}
           pauseDelay={1000}
         />
-      </PageImage>
+      </Row>
     </Container>
   );
 };
 
-export default ArticlesPage;
+export default NotFoundPage;
