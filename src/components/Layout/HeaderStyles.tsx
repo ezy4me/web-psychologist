@@ -23,8 +23,20 @@ export const HeaderNavItem = styled.li`
   padding: 0.5rem;
 `;
 
-export const MyLink = styled.div`
-  background-image: linear-gradient(to right, #53baff, #00bbff 50%, #000 50%);
+interface MyLinkProps {
+  gradientColorStart?: string;
+  gradientColorEnd?: string;
+  hoverColor?: string;
+  color?: string;
+}
+
+export const MyLink = styled.div<MyLinkProps>`
+  background-image: linear-gradient(
+    to right,
+    ${({ gradientColorStart = "#53baff" }) => gradientColorStart},
+    ${({ gradientColorEnd = "#00bbff" }) => gradientColorEnd} 50%,
+    ${({ color = "#000" }) => color} 50%
+  );
   background-size: 200% 100%;
   background-position: -100%;
   display: inline-block;
@@ -36,7 +48,7 @@ export const MyLink = styled.div`
 
   &:before {
     content: "";
-    background: #8cc7ff;
+    background: ${({ gradientColorStart = "#53baff" }) => gradientColorStart};
     display: block;
     position: absolute;
     bottom: -2px;
@@ -56,10 +68,6 @@ export const MyLink = styled.div`
   }
 
   cursor: pointer;
-
-  &:hover {
-    color: red;
-  }
 `;
 
 export const HeaderActions = styled.div`

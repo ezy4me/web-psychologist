@@ -1,21 +1,39 @@
 import styled from "styled-components";
 
-export const SectionTitle = styled.h2`
-  font-size: 32px;
-  font-weight: bold;
-  color: #333;
+type SectionTitleProps = {
+  fontSize?: string;
+  fontWeight?: string;
+  color?: string;
+};
+
+export const SectionTitle = styled.h2<SectionTitleProps>`
+  font-size: ${({ fontSize = "32px" }) => fontSize};
+  font-weight: ${({ fontWeight = "bold" }) => fontWeight};
+  color: ${({ color = "#333" }) => color};
 `;
 
-export const HighlightText = styled.span`
-  font-size: 32px;
-  font-weight: bold;
-  color: #4ba8ff;
+type HighlightTextProps = {
+  fontSize?: string;
+  fontWeight?: string;
+  color?: string;
+};
+
+export const HighlightText = styled.span<HighlightTextProps>`
+  font-size: ${({ fontSize = "32px" }) => fontSize};
+  font-weight: ${({ fontWeight = "bold" }) => fontWeight};
+  color: ${({ color = "#4ba8ff" }) => color};
 `;
 
-export const Text = styled.p`
-  font-size: 1rem;
-  line-height: 1.5rem;
-  font-weight: 500;
-  color: #202020;
-`;
+type TextProps = {
+  fontSize?: string;
+  lineHeight?: string;
+  fontWeight?: string;
+  color?: string;
+};
 
+export const Text = styled.p<TextProps>`
+  font-size: ${({ fontSize = "1rem" }) => fontSize};
+  line-height: ${({ lineHeight = "1.5rem" }) => lineHeight};
+  font-weight: ${({ fontWeight = "500" }) => fontWeight};
+  color: ${({ color = "#202020" }) => color};
+`;

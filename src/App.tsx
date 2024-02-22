@@ -7,7 +7,7 @@ import Theme from "./styles/theme";
 const Wrapper = styled.div`
   max-width: 1400px;
   min-height: 100vh;
-  margin: 0 auto;
+  margin: 2rem auto;
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -20,13 +20,13 @@ const Content = styled.div`
 const App = () => {
   return (
     <Theme>
+      <Header />
       <Wrapper>
-        <Header />
         <Content>
           <Outlet />
         </Content>
-        <Footer />
       </Wrapper>
+      <Footer />
     </Theme>
   );
 };
