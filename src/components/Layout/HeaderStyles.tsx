@@ -2,9 +2,10 @@ import styled from "styled-components";
 
 export const HeaderContainer = styled.header`
   display: grid;
+  max-width: 1400px;
+  margin: 0 auto;
   grid-template-columns: repeat(3, 1fr);
   align-items: center;
-  justify-content: space-between;
   padding: 1rem;
   border-bottom-left-radius: 16px;
   border-bottom-right-radius: 16px;
@@ -78,19 +79,6 @@ export const HeaderActions = styled.div`
   gap: 1rem;
 `;
 
-export const Button = styled.button`
-  padding: 0.5rem 1rem;
-  background-color: #0b85ff;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-
-  &:hover {
-    background-color: #0e7ae5;
-  }
-`;
 
 export const Logo = styled.div`
   display: flex;

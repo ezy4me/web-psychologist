@@ -43,7 +43,7 @@ const StyledCard = styled.div<CardProps>`
   gap: 0.5rem;
 
   &:hover {
-    transform: scale(1.02);
+    transform: scale(1.01);
   }
   cursor: pointer;
   transition: all 0.5s ease-in-out;
@@ -62,7 +62,7 @@ export const CardImage = styled.img<CardImageProps>`
   border-top-right-radius: 8px;
 
   &:hover {
-    transform: scale(1.02);
+    transform: scale(1.01);
   }
   transition: all 0.5s ease-in-out;
 `;

@@ -3,7 +3,7 @@
   line-height: 1.5rem;
   font-weight: 400;
   font-size: 18px;
-  
+
   background: #fcfcfc;
   color: #141414;
 
@@ -15,9 +15,14 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.swal2-shown,
+swal2-height-auto {
+  padding: 0 !important;
+}
+
 html {
   margin-right: calc(-1 * (100vw - 100%));
-  overflow-x: hidden;
+  overflow-x: hidden !important;
 }
 
 /* reset.css */

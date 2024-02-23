@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import {
   HeaderContainer,
@@ -7,12 +8,31 @@ import {
   MyLink,
   Logo,
   HeaderActions,
-  Button,
   LogoImage,
   LogoText,
 } from "./HeaderStyles";
+import Modal from "../../ui/Modal";
+import AuthForm from "../Auth/AuthForm";
+import RegForm from "../Auth/RegForm";
+import { Button } from "../../ui/Button";
+import { Row } from "../../ui/Layout";
 
 const Header = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isAuthForm, setIsAuthForm] = useState(true);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const toggleForm = () => {
+    setIsAuthForm((prev) => !prev);
+  };
+
   return (
     <HeaderContainer>
       <Link to={"/"}>
@@ -46,8 +66,16 @@ const Header = () => {
         </HeaderNavList>
       </HeaderNav>
       <HeaderActions>
-        <Button>Войти</Button>
+        <Button onClick={openModal}>Войти</Button>
       </HeaderActions>
+      <Modal isOpen={isModalOpen} onClose={closeModal}>
+        {isAuthForm ? <AuthForm /> : <RegForm />}
+        <Row>
+          <MyLink onClick={toggleForm}>
+            {isAuthForm ? "Регистрация" : "Авторизация"}
+          </MyLink>
+        </Row>
+      </Modal>
     </HeaderContainer>
   );
 };

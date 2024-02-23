@@ -14,6 +14,7 @@ import ArticlesPage from "./pages/ArticlesPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import Spinner from "./ui/Spinner";
 import App from "./App";
+import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
 
 
 
@@ -24,6 +25,7 @@ const router = createBrowserRouter(
       <Route path="/about" element={<AboutPage />} />
       <Route path="/tests" element={<TestsPage />} />
       <Route path="/articles" element={<ArticlesPage />} />
+      <Route path="/privacy" element={<PrivacyPolicyPage />} />
       <Route path="/*" element={<NotFoundPage />} />
     </Route>
   )
