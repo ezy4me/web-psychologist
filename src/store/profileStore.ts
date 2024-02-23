@@ -12,15 +12,15 @@ type Profile = {
   userId: number;
 };
 
-type TestState = {
+type ProfileState = {
   profile: Profile | null;
 };
 
-type TestActions = {
+type ProfileActions = {
   getUserProfile: (userId: number) => Promise<void>;
 };
 
-const useTestStore = create<TestState & TestActions>((set) => ({
+const useProfileStore = create<ProfileState & ProfileActions>((set) => ({
   profile: null,
   getUserProfile: async (userId) => {
     try {
@@ -32,4 +32,4 @@ const useTestStore = create<TestState & TestActions>((set) => ({
   },
 }));
 
-export default useTestStore;
+export default useProfileStore;

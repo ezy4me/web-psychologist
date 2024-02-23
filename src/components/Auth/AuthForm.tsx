@@ -1,15 +1,23 @@
-import { useState, ChangeEvent } from "react";
+import { useState, ChangeEvent, useEffect } from "react";
 import { Button } from "../../ui/Button";
 import Card, { CardContent, CardTitle } from "../../ui/Card";
 import Input from "../../ui/Input";
 import useAuthStore from "../../store/authStore";
+import { useNavigate } from "react-router-dom";
 
-const AuthForm = () => {
+interface AuthFormProps {
+  closeModal?: () => void;
+}
+
+const AuthForm = ({ closeModal }: AuthFormProps) => {
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
-  const { onLogin } = useAuthStore((state) => ({
+  const { accesToken, onLogin } = useAuthStore((state) => ({
     onLogin: state.onLogin,
+    accesToken: state.accesToken,
   }));
 
   const handleEmailChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -20,8 +28,14 @@ const AuthForm = () => {
     setPassword(e.target.value);
   };
 
-  const handleLogin = () => {
-    onLogin(email, password);
+  useEffect(() => {
+    if (accesToken) navigate("/profile");
+  }, [accesToken]);
+
+  const handleLogin = async () => {
+    await onLogin(email, password).then(() => {
+      if (closeModal) closeModal();
+    });
   };
 
   return (

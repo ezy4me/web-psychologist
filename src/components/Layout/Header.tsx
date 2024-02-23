@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   HeaderContainer,
@@ -16,10 +16,19 @@ import AuthForm from "../Auth/AuthForm";
 import RegForm from "../Auth/RegForm";
 import { Button } from "../../ui/Button";
 import { Row } from "../../ui/Layout";
+import useAuthStore from "../../store/authStore";
 
 const Header = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isAuthForm, setIsAuthForm] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [isAuthForm, setIsAuthForm] = useState<boolean>(true);
+
+  const [isAuth, setIsAuth] = useState<boolean>(false);
+
+  const { user } = useAuthStore();
+
+  useEffect(() => {
+    if (user) setIsAuth(true);
+  }, [user]);
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -66,10 +75,18 @@ const Header = () => {
         </HeaderNavList>
       </HeaderNav>
       <HeaderActions>
-        <Button onClick={openModal}>Войти</Button>
+        {!isAuth ? (
+          <Button onClick={openModal}>Войти</Button>
+        ) : (
+          <Link to={"/profile"}>{user?.email}</Link>
+        )}
       </HeaderActions>
       <Modal isOpen={isModalOpen} onClose={closeModal}>
-        {isAuthForm ? <AuthForm /> : <RegForm />}
+        {isAuthForm ? (
+          <AuthForm closeModal={closeModal} />
+        ) : (
+          <RegForm closeModal={closeModal} />
+        )}
         <Row>
           <MyLink onClick={toggleForm}>
             {isAuthForm ? "Регистрация" : "Авторизация"}

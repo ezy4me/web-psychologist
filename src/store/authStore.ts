@@ -6,7 +6,7 @@ type AuthState = {
   roleId: number;
   email: string;
   user: any;
-  accesToken: string;
+  accesToken: string | null;
   refreshToken: any;
 };
 
@@ -20,17 +20,26 @@ type AuthActions = {
   ) => Promise<void>;
 };
 
+const getValueFromLocalStorage = (key: string) => {
+  const value = localStorage.getItem(key);
+  return value ? JSON.parse(value) : null;
+};
+
 const useAuthStore = create<AuthState & AuthActions>((set) => ({
   userId: 0,
   roleId: 0,
   email: "",
-  user: {},
-  accesToken: "",
+  user: getValueFromLocalStorage("user"),
+  accesToken: null || localStorage.getItem("token"),
   refreshToken: {},
   onLogin: async (email, password) => {
     try {
       const data = await AuthService.login(email, password);
-      set({ user: data });
+      
+      localStorage.setItem("token", JSON.stringify(data?.accesToken));
+      localStorage.setItem("user", JSON.stringify(data?.user));
+
+      set({ accesToken: data?.accesToken, user: data?.user });
     } catch (error) {
       console.error("Error login:", error);
     }

@@ -5,13 +5,18 @@ import Input from "../../ui/Input";
 import useAuthStore from "../../store/authStore";
 import Select from "../../ui/Select";
 
-const RegForm = () => {
+interface RegFormProps {
+  closeModal?: () => void;
+}
+
+const RegForm = ({ closeModal }: RegFormProps) => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [roleId, setRoleId] = useState<number>(0);
 
-  const { onRegister } = useAuthStore((state) => ({
+  const { accesToken, onRegister } = useAuthStore((state) => ({
     onRegister: state.onRegister,
+    accesToken: state.accesToken,
   }));
 
   const handleEmailChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -26,8 +31,10 @@ const RegForm = () => {
     setRoleId(Number(value));
   };
 
-  const handleRegister = () => {
-    onRegister(email, password, password, roleId);
+  const handleRegister = async () => {
+    await onRegister(email, password, password, roleId).then(() => {
+      if (closeModal) closeModal();
+    });
   };
 
   return (

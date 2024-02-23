@@ -15,8 +15,7 @@ import NotFoundPage from "./pages/NotFoundPage";
 import Spinner from "./ui/Spinner";
 import App from "./App";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
-
-
+import ProfilePage from "./pages/ProfilePage";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -26,6 +25,7 @@ const router = createBrowserRouter(
       <Route path="/tests" element={<TestsPage />} />
       <Route path="/articles" element={<ArticlesPage />} />
       <Route path="/privacy" element={<PrivacyPolicyPage />} />
+      <Route path="/profile" element={<ProfilePage />} />
       <Route path="/*" element={<NotFoundPage />} />
     </Route>
   )
@@ -34,5 +34,5 @@ const router = createBrowserRouter(
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <RouterProvider router={router} fallbackElement={<Spinner />} />
-  </React.StrictMode>,
+  </React.StrictMode>
 );

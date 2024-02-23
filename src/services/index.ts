@@ -20,7 +20,7 @@ const apiInstance = axios.create({
 apiInstance.interceptors.request.use(async (config) => {
   const token = await getToken();
   if (token) {
-    config.headers.authorization = "Bearer " + token;
+    config.headers.authorization = token;
   }
 
   return config;
@@ -43,8 +43,9 @@ const formDataInstance = axios.create({
 authInstance.interceptors.request.use(async (config) => {
   const token = await getToken();
   if (token) {
-    config.headers.authorization = "Bearer " + token;
+    config.headers.authorization = token;
   }
+
   return config;
 });
 
